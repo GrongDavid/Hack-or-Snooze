@@ -35,12 +35,25 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-function navSubmitStory(evt){
-    console.debug("navSumitStory", evt)
+function navSubmit(evt){
+    console.debug("navSumitStory", evt);
     hidePageComponents();
     $allStoriesList.show();
     $submitForm.show();
 }
 
-$navSubmitForm.on("click", navSubmitStory);
+$navSubmitForm.on("click", navSubmit);
+
+function navFavorite(evt){
+  console.debug("navFavorite", evt);
+  hidePageComponents();
+  //$favoritedStories.show();
+  // if(currentUser.favorites.length === 0){
+  //   console.log("no favorites");
+  //   $("").append("<h3>There are no favorited stories</h3>");
+  // }
+  putFavoritesListOnPage();
+}
+
+$navFavorites.on("click", navFavorite);
 

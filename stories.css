@@ -29,6 +29,10 @@
   .story-link:hover {
     text-decoration: none;
   }
+
+  .fa-star:hover {
+    cursor: pointer;
+  }
   
   .story-author {
     margin-left: 2em;
