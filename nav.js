@@ -47,13 +47,25 @@ $navSubmitForm.on("click", navSubmit);
 function navFavorite(evt){
   console.debug("navFavorite", evt);
   hidePageComponents();
-  //$favoritedStories.show();
-  // if(currentUser.favorites.length === 0){
-  //   console.log("no favorites");
-  //   $("").append("<h3>There are no favorited stories</h3>");
-  // }
   putFavoritesListOnPage();
 }
 
-$navFavorites.on("click", navFavorite);
+$body.on("click", "#nav-favorites", navFavorite);
+
+function navMyStories(evt) {
+  console.debug("navMyStories", evt);
+  hidePageComponents();
+  putUserStoriesOnPage();
+  $ownStories.show();
+}
+
+$body.on("click", "#nav-my-stories", navMyStories);
+
+function navProfileClick(evt) {
+  console.debug("navProfileClick", evt);
+  hidePageComponents();
+  $userProfile.show();
+}
+
+$navUserProfile.on("click", navProfileClick);
 

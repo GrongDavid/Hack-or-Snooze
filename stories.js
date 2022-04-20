@@ -102,7 +102,7 @@ function putFavoritesListOnPage() {
   $favoritedStories.empty();
 
   if (currentUser.favorites.length === 0) {
-    $favoritedStories.append("<h5>No favorites added!</h5>");
+    $favoritedStories.append("<h4>You haven't favorited any stories yet</h4>");
   } else {
     for (let story of currentUser.favorites) {
       const $story = generateStoryMarkup(story);
@@ -111,6 +111,21 @@ function putFavoritesListOnPage() {
   }
 
   $favoritedStories.show();
+}
+
+function putUserStoriesOnPage() {
+  $ownStories.empty();
+
+  if (currentUser.ownStories.length === 0) {
+    $ownStories.append("<h4>You haven't added any stories yet</h4>");
+  } else {
+    for (let story of currentUser.ownStories) {
+      let $story = generateStoryMarkup(story, true);
+      $ownStories.append($story);
+    }
+  }
+
+  $ownStories.show();
 }
 
 async function toggleStoryFavorite(evt) {
@@ -124,7 +139,7 @@ async function toggleStoryFavorite(evt) {
 
   if ($tgt.hasClass("fa-solid")) {
     await currentUser.removeFavoriteStory(story);
-    $tgt.closest("i").toggleClass("fa-regular");
+    $tgt.closest("i").toggleClass("fa-solid");
   } else {
     await currentUser.favoriteStory(story);
     $tgt.closest("i").toggleClass("fa-solid");
